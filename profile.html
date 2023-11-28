@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Bloging App</title>
+    <link rel="stylesheet" href="./dist/style.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <!-- nav bar start -->
+        <div class="navbar flex items-center justify-between p-[15px] bg-[#7749F8] text-[#fff]">
+            <header>
+                <p class="text-[20px] font-bold">Personal Blogging App</p>
+            </header>
+            <div class="login">
+                <button class="font-semibold" id="logout">Log Out</button>
+            </div>
+        </div>
+        <!-- nav bar End -->
+
+        <!-- text Start -->
+        <div class="main-text-head border-b-[1px]  border-[#80808038] p-[20px]">
+            <p class="text-[25px] font-bold ">Profile</p>
+        </div>
+        <!-- text End -->
+
+        <!-- profile page start -->
+        <div class="main-profile flex   flex-col pt-[60px] pl-[60px]">
+            <div class="profile bg-[#fff] w-[50%] p-[30px] border rounded-lg shadow-2xl pl-[30px]">
+                <!-- profile image start -->
+                <div class="profile-image">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyt3.ggpht.com%2Fa%2FAATXAJy7X4Sq3Wves_0288VGFmazoz0Z3WL9moAeNw%3Ds900-c-k-c0xffffffff-no-rj-mo&f=1&nofb=1&ipt=4f591b5e5b2858c2f6ecb9b159b5e448a582cc2994fb8295c9d7eb81a95aba3a&ipo=images"
+                        alt="inzamam" class="w-[200px] rounded-2xl">
+                </div>
+                <!-- profile image end -->
+
+                <!-- profile-head-name-start -->
+                <div class="profile-name">
+                    <p class="font-bold">Inzamam Malik <i class="fa-solid fa-pen" style="color: #7749f8;"></i></p>
+                </div>
+                <div class="profile-head">
+                    <p class="font-bold">Password</p>
+                </div>
+                <!-- profile-head-name-End -->
+
+                <!-- password change start -->
+                <form id="form" class="flex  gap-4 flex-col">
+                   <!-- name start -->
+                   <input type="text" placeholder="Enter New Name" id="update-name" class="border border-[#7749F8] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double w-[40%]">
+                   <!-- name end -->
+
+                   <!-- old passsword satrt -->
+                   <input type="password" placeholder="Old Password" id="old-password" class="border border-[#7749F8] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double w-[40%]">
+                   <!-- old passsword end -->
+
+                   <!-- new-password-start -->
+                   <input type="password" placeholder="New Password" id="new-password" class="border border-[#7749F8] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double w-[40%]">
+                   <!-- new-password-end -->
+
+                   <input type="password" placeholder="Repeat Password" id="repeat-password" class="border border-[#7749F8] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double w-[40%]">
+                   <!-- retype-password-end -->
+
+                   <div class="btn">
+                    <input type="submit" value="Update Password" class="bg-[#7749F8] px-[20px] py-[10px] rounded-lg font-semibold text-[#fff]">
+                   </div>
+
+                </form>
+                <!-- password change end -->
+
+            </div>
+        </div>
+        <!-- profile page end -->
+
+
+
+    </div>
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/5562aae272.js" crossorigin="anonymous"></script>
+    <!-- font -->
+    <script src="./script/profile.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Bloging App</title>
+    <link rel="stylesheet" href="./dist/style.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <!-- nav bar start -->
+        <div class="navbar flex items-center justify-between p-[15px] bg-[#7749F8] text-[#fff]">
+            <header>
+                <p class="text-[20px] font-bold">Personal Blogging App</p>
+            </header>
+            <div class="login">
+                <a href="./index.html" class="font-semibold">Signup</a>
+            </div>
+        </div>
+        <!-- nav bar End -->
+
+        <!-- text Start -->
+        <div class="main-text-head border-b-[1px]  border-[#80808038] p-[20px]">
+            <p class="text-[25px] font-bold ">Login</p>
+        </div>
+        <!-- text End -->
+
+        <!-- Form start -->
+        <div class="main-form flex items-center justify-center p-[100px]">
+            <div class="form  bg-[#fff] w-[50%] pt-[70px] border rounded-md shadow-2xl ">
+                <form id="form" class="flex items-center justify-center flex-col gap-5">
+
+                    <!-- Email Start -->
+                    <input type="email" placeholder="Enter Your Email"
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double" id="email">
+                    <!-- Email End -->
+
+                    <!-- password Start -->
+                    <input type="password" placeholder="Enter Your Password"
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double"required id="password">
+                    <!-- password End -->
+
+                    <!-- Button start -->
+                    <div class="p-[10px]">
+                        <button
+                            class="bg-[#7749F8] px-[20px] py-[10px] rounded-lg font-semibold text-[#fff] " type="submit">Login</button>
+                    </div>
+                    <!-- Button End -->
+                </form>
+            </div>
+        </div>
+        <!-- Form End -->
+
+
+
+    </div>
+<script src="./script/login.js" type="module"></script>
+</body>
+
+</html>
