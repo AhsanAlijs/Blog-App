@@ -7,7 +7,7 @@ const password = document.querySelector('#password');
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        window.location = 'profile.html'
+        window.location = 'dashboard.html'
         return
     }
 });
@@ -18,7 +18,7 @@ form.addEventListener('submit', (event) => {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
-            window.location = 'profile.html'
+            window.location = 'dashboard.html'
         })
         .catch((error) => {
             const errorCode = error.code;
