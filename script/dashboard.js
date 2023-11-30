@@ -12,11 +12,10 @@ const blogImg = document.querySelector("#blog-img")
 
 onAuthStateChanged(auth, async (user) => {
     if (!user) {
-        window.location = 'login.html'
+        window.location = 'allblogs.html'
         return
     }
-    let uid=user.uid
-    let navData;
+    let uid = user.uid
     const q = query(collection(db, "users"), where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -36,3 +35,4 @@ logout.addEventListener('click', () => {
         console.log(error);
     });
 })
+

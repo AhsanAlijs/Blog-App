@@ -4,33 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App|Dashboard</title>
+    <title>Personal Bloging App</title>
     <link rel="stylesheet" href="./dist/style.css">
 </head>
 
 <body>
 
-    <div class="man bg-[#f1eeee]">
+    <div class="main bg-[#e9e8e8] h-[]">
         <!-- nav bar start -->
-        <div class="navbar bg-[#7749F8]">
-            <div class="flex-1">
-                <a class="text-xl font-bold text-[#fff]">Personal Blogging App</a>
-            </div>
-            <div class="flex-none gap-2">
-
-                <p id="id-name" class="text-[#fff] font-bold"></p>
+        <div class="navbar flex items-center justify-between p-[15px] bg-[#7749F8] text-[#fff]">
+            <header>
+                <p class="text-[20px] font-bold">Personal Blogging App</p>
+            </header>
+            <!-- <div class="flex-none gap-2">
 
                 <div class="dropdown dropdown-end">
                     <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
-                            <img src="" id="image-nav">
+                            <img alt="Tailwind CSS Navbar component"
+                                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                         </div>
                     </div>
                     <ul class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                         <li>
-                            <a class="justify-between" href="./profile.html">
-                                Profile
-                                <span class="badge">New</span>
+                            <a class="justify-between" href="./dashboard.html">
+                                Dashboard
                             </a>
 
                         </li>
@@ -41,47 +39,20 @@
                         </li>
                     </ul>
                 </div>
+            </div> -->
+            <div class="login">
+                <a class="font-semibold" id="logoin" href="./login.html">Login</a>
             </div>
         </div>
         <!-- nav bar End -->
 
         <!-- text Start -->
-        <div class="main-text-head border-b-[1px]  border-[#80808038] pl-[50px] p-3 bg-white">
-            <p class="text-[25px] font-bold text-[#000]">Dashboard</p>
+        <div class="main-text-head border-b-[1px]  border-[#80808038] bg-[#fff] p-[20px]">
+            <p class="text-[30px] font-bold text-[#000]" id="time"></p>
         </div>
         <!-- text End -->
 
-        <!-- dashboard inputs start -->
-        <div class="dashboard-main mt-[30px]">
-            <div class="inputs pl-[50px]">
-                <form id="blogForm" class="w-[70%] bg-[#ffff] p-[50px] shadow-2xl">
-                    <!-- title start -->
-                    <input type="text" id="title" required minlength="5" maxlength="50"
-                        placeholder="Title (5-50 characters)"
-                        class="w-[100%] p-[5px] bg-transparent border border-[#7749F8] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double  text-[#000] ">
-                    <!-- title End -->
 
-                    <!-- Bodytext Start -->
-                    <textarea id="body" name="body" required minlength="100" maxlength="3000"
-                        placeholder="Body Text (100-3000 characters)"
-                        class="w-[100%] p-[5px] bg-transparent border border-[#7749F8] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double  text-[#000] h-[114px] mt-[20px]"></textarea>
-                    <!-- Bodytext end -->
-
-                    <div class="blog-post text-start">
-                        <button type="submit"
-                            class="bg-[#7749F8] px-[20px] py-[10px] rounded-lg font-semibold text-[#fff] mt-[10px]">Publish
-                            blog</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- dashboard inputs End -->
-
-        <!-- blog-head start -->
-        <div class="blg-head p-[50px]">
-            <p class="text-lg font-bold text-[#000]">My Blogs</p>
-        </div>
-        <!-- blog-head end -->
 
         <!-- blog div start -->
 
@@ -90,7 +61,7 @@
                 <!-- blog title start -->
                 <div class="blog-title flex items-center gap-[15px]">
                     <div class="">
-                        <img src="" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/pblogingapp.appspot.com/o/Hasnain%20Ali?alt=media&token=59da384b-5493-49ff-b812-94d07d4aec79" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
                     </div>
 
                     <div class="title-text  ">
@@ -120,11 +91,9 @@
                     <!-- blog div End -->
                     <div class="blog-btn flex items-center gap-[20px] mt-[5px]">
                         <div class="edit">
-                            <button class="text-[#7779F8] text-lg font-medium">Edit</button>
+                            <a class="text-[#7779F8] text-lg font-medium" href="./spacificuser.html">see all from this user</a>
                         </div>
-                        <div class="delete">
-                            <button class="text-[#7779F8] text-lg font-medium">Delete</button>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -141,10 +110,11 @@
 
 
 
-
-
     </div>
-    <script type="module" src="./script/dashboard.js"></script>
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/5562aae272.js" crossorigin="anonymous"></script>
+    <!-- font -->
+    <script src="./script/allblogs.js" type="module"></script>
 </body>
 
 </html>
