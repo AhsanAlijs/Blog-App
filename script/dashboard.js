@@ -1,13 +1,18 @@
 import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { collection, addDoc, Timestamp, getDocs, where, query } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+import { collection, addDoc, Timestamp, getDocs, where, query, orderBy } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { auth, db } from './config.js';
 
 
 const imageNav = document.querySelector("#image-nav");
 const idName = document.querySelector('#id-name');
-const blogImg = document.querySelector("#blog-img")
+const blogImg = document.querySelector("#blog-img");
+const blogform = document.querySelector('#blogform');
+const title = document.querySelector('#title')
+const description = document.querySelector('#description');
+const blogcontainor = document.querySelector('#blogcontainor')
 
-
+let img;
+let idNames;
 
 
 onAuthStateChanged(auth, async (user) => {
@@ -22,8 +27,11 @@ onAuthStateChanged(auth, async (user) => {
         // console.log(doc.data());
         idName.innerHTML = doc.data().name
         imageNav.src = doc.data().profileUrl
-        blogImg.src = doc.data().profileUrl
+        idNames = doc.data().name
+        img = doc.data().profileUrl
     });
+    getdataformfirestore(uid)
+    // renderPost(img)
 });
 
 const logout = document.querySelector('#logout');
@@ -35,4 +43,106 @@ logout.addEventListener('click', () => {
         console.log(error);
     });
 })
+
+let postsArr = [];
+
+
+function renderPost() {
+    postsArr.map((item) => {
+        const time = item.time.seconds
+        const mydate = new Date(time * 1000)
+        const stringdate = mydate.toLocaleString()
+        const parts = stringdate.split('/')
+        const month = parseInt(parts[0], 10);
+        const day = parseInt(parts[1], 10);
+        const year = parseInt(parts[2], 10);
+        // Create a Date object
+        const myDate = new Date(year, month - 1, day);
+        // Format the date as "Dec 2nd, 2023"
+        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+        const formattedDate = myDate.toLocaleDateString('en-US', options);
+        // console.log(formattedDate);
+        // console.log(mydate)
+        blogcontainor.innerHTML += `
+        <div class="main-blog w-[75%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]" >
+                <!-- blog title start -->
+                <div class="blog-title flex items-center gap-[15px]">
+                    <div class="">
+                        <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
+                    </div>
+
+                    <div class="title-text  ">
+                        <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button Could Be
+                            Coming to the iPhone 15</p>
+                        <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> - <span>${formattedDate}</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- blog title end -->
+
+                <!-- Blog-description-start -->
+                <div class="blog-description mt-[20px]">
+                    <!-- blog div start  -->
+                    <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
+                        <p>
+                           ${item.description.slice(0, 382)}
+                        </P>
+                        <p>${item.description.slice(382)}</p>
+                    </div>
+                    <!-- blog div End -->
+                    <div class="blog-btn flex items-center gap-[20px] mt-[5px]">
+                        <div class="edit">
+                            <button class="text-[#7779F8] text-lg font-medium">Edit</button>
+                        </div>
+                        <div class="delete">
+                            <button class="text-[#7779F8] text-lg font-medium">Delete</button>
+                        </div>
+                    </div>
+                </div>
+        `
+        // console.log(item);
+    });
+
+}
+
+
+
+// get data fire store Start
+async function getdataformfirestore(uid) {
+    postsArr.length = 0;
+    const q = await query(collection(db, "posts"), orderBy("time", "desc"), where("uid", "==", uid));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        postsArr.push({ ...doc.data(), docId: doc.id })
+    });
+    renderPost()
+}
+
+getdataformfirestore()
+// get data fire store End
+
+
+
+
+blogform.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    try {
+        const postObj = {
+            
+            title: title.value,
+            description: description.value,
+            uid: auth.currentUser.uid,
+            time: Timestamp.fromDate(new Date())
+        }
+        const docRef = await addDoc(collection(db, "posts"), postObj);
+        console.log("Document written with ID: ", docRef.id);
+        postObj.docId = docRef.id
+        postsArr = [postObj, ...postsArr];
+        // console.log(postsArr);
+        renderPost()
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+})
+// console.log(postsArr);
 

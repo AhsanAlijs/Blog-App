@@ -54,7 +54,7 @@
         <!-- dashboard inputs start -->
         <div class="dashboard-main mt-[30px]">
             <div class="inputs pl-[50px]">
-                <form id="blogForm" class="w-[70%] bg-[#ffff] p-[50px] shadow-2xl">
+                <form id="blogform" class="w-[70%] bg-[#ffff] p-[50px] shadow-2xl">
                     <!-- title start -->
                     <input type="text" id="title" required minlength="5" maxlength="50"
                         placeholder="Title (5-50 characters)"
@@ -62,7 +62,7 @@
                     <!-- title End -->
 
                     <!-- Bodytext Start -->
-                    <textarea id="body" name="body" required minlength="100" maxlength="3000"
+                    <textarea id="description"  required minlength="100" maxlength="3000"
                         placeholder="Body Text (100-3000 characters)"
                         class="w-[100%] p-[5px] bg-transparent border border-[#7749F8] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double  text-[#000] h-[114px] mt-[20px]"></textarea>
                     <!-- Bodytext end -->
@@ -85,48 +85,8 @@
 
         <!-- blog div start -->
 
-        <div class="mian-bloging-site p-[50px]">
-            <div class="main-blog w-[75%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl">
-                <!-- blog title start -->
-                <div class="blog-title flex items-center gap-[15px]">
-                    <div class="">
-                        <img src="" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
-                    </div>
-
-                    <div class="title-text  ">
-                        <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button Could Be
-                            Coming to the iPhone 15</p>
-                        <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]">Inzamam Malik - August 16th, 2023
-                        </p>
-                    </div>
-                </div>
-                <!-- blog title end -->
-
-                <!-- Blog-description-start -->
-                <div class="blog-description mt-[20px]">
-                    <!-- blog div start  -->
-                    <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
-                        <p>
-                            Apple could be putting an Action button on your next iPhone. According to a July report
-                            fromMacRumors, code in the fourth iOS 17 developer beta hints at functionality for an
-                            Actionbutton
-                            on the next-gen iPhone 15 Pro and Pro Max models.</p>
-                        <P>Apple introduced the Action button on the Apple Watch Ultra. It's a physical button on the
-                            sideof the Apple Watch Ultra that allows you to run a preselected function or program when
-                            you pressit without unlocking your device or navigating to an app. Some of the preselected
-                            functions include starting a stopwatch, beginning a workout and turning on your flashlight.
-                        </P>
-                    </div>
-                    <!-- blog div End -->
-                    <div class="blog-btn flex items-center gap-[20px] mt-[5px]">
-                        <div class="edit">
-                            <button class="text-[#7779F8] text-lg font-medium">Edit</button>
-                        </div>
-                        <div class="delete">
-                            <button class="text-[#7779F8] text-lg font-medium">Delete</button>
-                        </div>
-                    </div>
-                </div>
+        <div class="mian-bloging-site p-[50px]" id="blogcontainor">
+            
             </div>
 
             <!-- Blog-description-End -->
