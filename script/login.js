@@ -23,7 +23,5 @@ form.addEventListener('submit', (event) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            modalMessage.innerHTML = 'invalid-login-credentials'
-            my_modal_1.showModal()
         });
 })

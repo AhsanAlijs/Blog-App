@@ -1,5 +1,5 @@
 import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { collection, addDoc, Timestamp, getDocs, where, query, orderBy } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+import { collection, addDoc, Timestamp, getDocs, where, query, orderBy, deleteDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { auth, db } from './config.js';
 
 
@@ -48,6 +48,7 @@ let postsArr = [];
 
 
 function renderPost() {
+    blogcontainor.innerHTML = ''
     postsArr.map((item) => {
         const time = item.time.seconds
         const mydate = new Date(time * 1000)
@@ -72,9 +73,8 @@ function renderPost() {
                     </div>
 
                     <div class="title-text  ">
-                        <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button Could Be
-                            Coming to the iPhone 15</p>
-                        <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> - <span>${formattedDate}</span>
+                        <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[%]">${item.title}</p>
+                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> - <span>${formattedDate}</span>
                         </p>
                     </div>
                 </div>
@@ -84,26 +84,62 @@ function renderPost() {
                 <div class="blog-description mt-[20px]">
                     <!-- blog div start  -->
                     <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
-                        <p>
-                           ${item.description.slice(0, 382)}
+                        <p id="descriptionEdit">
+                           ${item.description}
                         </P>
-                        <p>${item.description.slice(382)}</p>
                     </div>
                     <!-- blog div End -->
                     <div class="blog-btn flex items-center gap-[20px] mt-[5px]">
                         <div class="edit">
-                            <button class="text-[#7779F8] text-lg font-medium">Edit</button>
+                            <button class="text-[#7779F8] text-lg font-medium" id="update"><i class="fa-solid fa-file-pen"></i></button>
                         </div>
                         <div class="delete">
-                            <button class="text-[#7779F8] text-lg font-medium">Delete</button>
+                            <button class="text-[#7779F8] text-lg font-medium" id="delete">Delete</button>
                         </div>
                     </div>
                 </div>
         `
         // console.log(item);
     });
+    const del = document.querySelectorAll('#delete');
+    const upd = document.querySelectorAll('#update');
+    const modal = document.querySelector('.modal')
+
+
+    del.forEach((btn, index) => {
+        btn.addEventListener('click', async () => {
+            console.log("Delete Called", postsArr[index]);
+            await deleteDoc(doc(db, "posts", postsArr[index].docId))
+                .then(() => {
+                    console.log('post deleted');
+                    postsArr.splice(index, 1);
+                    renderPost()
+                });
+
+        })
+    })
+    upd.forEach((btn, index) => {
+        btn.addEventListener('click', async () => {
+            console.log("Edit Called", postsArr[index]);
+            const updatedTitle = prompt('Update the dox', postsArr[index].title)
+            const updateDescription = prompt('Update The Description', postsArr[index].description)
+            await updateDoc(doc(db, "posts", postsArr[index].docId), {
+                title: updatedTitle,
+                description:updateDescription,
+                time: Timestamp.fromDate(new Date())
+            });
+            postsArr[index].title = updatedTitle;
+            postsArr[index].description = updateDescription
+            renderPost()
+        })
+    })
 
 }
+
+
+
+
+
 
 
 
@@ -124,11 +160,23 @@ getdataformfirestore()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 blogform.addEventListener("submit", async (e) => {
     e.preventDefault();
     try {
         const postObj = {
-            
+
             title: title.value,
             description: description.value,
             uid: auth.currentUser.uid,
@@ -139,6 +187,8 @@ blogform.addEventListener("submit", async (e) => {
         postObj.docId = docRef.id
         postsArr = [postObj, ...postsArr];
         // console.log(postsArr);
+        title.value = ''
+        description.value = ''
         renderPost()
     } catch (e) {
         console.error("Error adding document: ", e);

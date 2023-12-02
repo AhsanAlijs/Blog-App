@@ -10,14 +10,14 @@
 
 <body>
 
-    <div class="main bg-[#ececec] ">
+    <div class="main bg-[#ececec] h-[] ">
         <!-- nav bar start -->
         <div class="navbar flex items-center justify-between p-[15px] bg-[#7749F8] text-[#fff]">
             <header>
                 <p class="text-[20px] font-bold">Personal Blogging App</p>
             </header>
             <div class="flex-none gap-2">
-             
+
                 <!-- <div class="dropdown dropdown-end">
                   <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                     <div class="w-10 rounded-full">
@@ -38,8 +38,8 @@
                     </li>
                   </ul>
                 </div> -->
-              </div>
-              <div class="login">
+            </div>
+            <div class="login">
                 <a class="font-semibold" id="logoin" href="./login.html">Login</a>
             </div>
         </div>
@@ -47,61 +47,192 @@
 
         <!-- text Start -->
         <div class="main-text-head border-b-[1px] bg-[#fff] border-[#80808038] p-[20px]">
-            <a class="text-[30px] font-bold text-[#7749F8]  " href="./index.html"> <i class="fa-solid fa-less-than"></i> Back to all blogs</a>
+            <a class="text-[30px] font-bold text-[#7749F8]  " href="./index.html"> <i class="fa-solid fa-less-than"></i>
+                Back to all blogs</a>
         </div>
         <!-- text End -->
 
+        <!-- blog start -->
 
-         <!-- blog div start -->
+        <div class="main-blog">
+            <div class="maintext p-[20px]">
 
-         <div class="mian-bloging-site p-[50px]">
-            <div class="main-blog w-[75%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl">
-                <!-- blog title start -->
-                <div class="blog-title flex items-center gap-[15px]">
-                    <div class="">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/pblogingapp.appspot.com/o/Hasnain%20Ali?alt=media&token=59da384b-5493-49ff-b812-94d07d4aec79" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
+                <div class="flex items-center justify-between flex-wrap ">
+                    <div class="main-blog w-[69%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]">
+                        <!-- blog title start -->
+                        <div class="blog-title flex items-center gap-[15px]">
+                            <div class="">
+                                <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]"
+                                    id="blog-img">
+                            </div>
+
+                            <div class="title-text  ">
+                                <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button
+                                    Could Be
+                                    Coming to the iPhone 15</p>
+                                <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> -
+                                    <span>${formattedDate}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- blog title end -->
+
+                        <!-- Blog-description-start -->
+                        <div class="blog-description mt-[20px]">
+                            <!-- blog div start  -->
+                            <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
+                                <p>
+                                    ${item.description.slice(0, 382)}
+                                </P>
+                                <p>${item.description.slice(382)}</p>
+                            </div>
+                            <!-- blog div End -->
+                           
+                        </div>
                     </div>
 
-                    <div class="title-text  ">
-                        <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button Could Be
-                            Coming to the iPhone 15</p>
-                        <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]">Inzamam Malik - August 16th, 2023
-                        </p>
+
+                    <div class="main-blog w-[69%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]">
+                        <!-- blog title start -->
+                        <div class="blog-title flex items-center gap-[15px]">
+                            <div class="">
+                                <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]"
+                                    id="blog-img">
+                            </div>
+
+                            <div class="title-text  ">
+                                <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button
+                                    Could Be
+                                    Coming to the iPhone 15</p>
+                                <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> -
+                                    <span>${formattedDate}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- blog title end -->
+
+                        <!-- Blog-description-start -->
+                        <div class="blog-description mt-[20px]">
+                            <!-- blog div start  -->
+                            <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
+                                <p>
+                                    ${item.description.slice(0, 382)}
+                                </P>
+                                <p>${item.description.slice(382)}</p>
+                            </div>
+                            <!-- blog div End -->
+                            
+                        </div>
+                    </div>
+
+
+
+                    <div class="main-blog w-[69%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]">
+                        <!-- blog title start -->
+                        <div class="blog-title flex items-center gap-[15px]">
+                            <div class="">
+                                <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]"
+                                    id="blog-img">
+                            </div>
+
+                            <div class="title-text  ">
+                                <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button
+                                    Could Be
+                                    Coming to the iPhone 15</p>
+                                <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> -
+                                    <span>${formattedDate}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- blog title end -->
+
+                        <!-- Blog-description-start -->
+                        <div class="blog-description mt-[20px]">
+                            <!-- blog div start  -->
+                            <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
+                                <p>
+                                    ${item.description.slice(0, 382)}
+                                </P>
+                                <p>${item.description.slice(382)}</p>
+                            </div>
+                            <!-- blog div End -->
+                            
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class=" text-end p-[20px] absolute  right-0 top-[200px]">
+                        <div class="email ">
+                            <p class="text-[#000] text-[20px] font-[600]">abc#gmail.com</p>
+                        </div>
+                        <div class="name ">
+                            <p class="text-[#7749F8] text-[40px] font-[700]">Ahsan ali</p>
+                        </div>
+                        <div class="img">
+                            <img src="https://s3-alpha-sig.figma.com/img/2a70/0436/ad923e69a8ff7debe812a1b55f9e2cca?Expires=1702252800&Signature=P3QSagMl-vOZI44Iw1oMQ7WsRYxkLBTtgKFXML2ZMHIqsifyscKolOr3g5acLxDqIeADPP-4fiaAbc9MXk2eN6sKznt4262wZ2nze2e1jHnRjaV9fvjddmCbCcfwMO-dZc5MqBpDlQqRC4r6biKgeyMigepKYLZctJWaSElXf4yL6SCEkcrfYRFMq1MnvdPb6RhJoN1k5HDvwYAPlO4mjrdxgENoFUapJSBEU0NHdXQrF47KP5DKelBqc4i8APv2LCfNPih6k4AsJbWNUQAKwaGNCRY0345mmLwRUG8rQ7BnckbDtX4Ehm5Mng3j5rSDSntbUptnNG5eofInaJb37g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt="" class="w-[300px] rounded-[12px]">
+                        </div>
+
                     </div>
                 </div>
-                <!-- blog title end -->
 
-                <!-- Blog-description-start -->
-                <div class="blog-description mt-[20px]">
-                    <!-- blog div start  -->
-                    <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
-                        <p>
-                            Apple could be putting an Action button on your next iPhone. According to a July report
-                            fromMacRumors, code in the fourth iOS 17 developer beta hints at functionality for an
-                            Actionbutton
-                            on the next-gen iPhone 15 Pro and Pro Max models.</p>
-                        <P>Apple introduced the Action button on the Apple Watch Ultra. It's a physical button on the
-                            sideof the Apple Watch Ultra that allows you to run a preselected function or program when
-                            you pressit without unlocking your device or navigating to an app. Some of the preselected
-                            functions include starting a stopwatch, beginning a workout and turning on your flashlight.
-                        </P>
-                    </div>
-                    <!-- blog div End -->
-                    
-                </div>
+
+
+
+
+
+
+
             </div>
 
-            <!-- Blog-description-End -->
-
-      
 
 
 
-    </div>
-    <!-- font -->
-    <script src="https://kit.fontawesome.com/5562aae272.js" crossorigin="anonymous"></script>
-    <!-- font -->
-    <script src="" type="module"></script>
+            <!-- blog end -->
+
+
+
+
+
+            <!-- left start
+        <div class="mainleft pr-[20px] pt-[60px] flex items-end justify-end">
+            <div class="flex items-end justify-end flex-col">
+                <div class="email ">
+                    <p class="text-[#000] text-[20px] font-[600]">abc#gmail.com</p>
+                </div>
+                <div class="name ">
+                    <p class="text-[#7749F8] text-[40px] font-[700]">Ahsan ali</p>
+                </div>
+                <div class="img">
+                    <img src="https://s3-alpha-sig.figma.com/img/2a70/0436/ad923e69a8ff7debe812a1b55f9e2cca?Expires=1702252800&Signature=P3QSagMl-vOZI44Iw1oMQ7WsRYxkLBTtgKFXML2ZMHIqsifyscKolOr3g5acLxDqIeADPP-4fiaAbc9MXk2eN6sKznt4262wZ2nze2e1jHnRjaV9fvjddmCbCcfwMO-dZc5MqBpDlQqRC4r6biKgeyMigepKYLZctJWaSElXf4yL6SCEkcrfYRFMq1MnvdPb6RhJoN1k5HDvwYAPlO4mjrdxgENoFUapJSBEU0NHdXQrF47KP5DKelBqc4i8APv2LCfNPih6k4AsJbWNUQAKwaGNCRY0345mmLwRUG8rQ7BnckbDtX4Ehm5Mng3j5rSDSntbUptnNG5eofInaJb37g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                        alt="" class="w-[300px] rounded-[12px]">
+                </div>
+            </div>
+        </div>
+        left End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <!-- font -->
+        <script src="https://kit.fontawesome.com/5562aae272.js" crossorigin="anonymous"></script>
+        <!-- font -->
+        <script src="" type="module"></script>
 </body>
 
 </html>
