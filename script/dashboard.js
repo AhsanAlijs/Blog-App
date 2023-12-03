@@ -94,7 +94,7 @@ function renderPost() {
                             <button class="text-[#7779F8] text-lg font-medium" id="update"><i class="fa-solid fa-file-pen"></i></button>
                         </div>
                         <div class="delete">
-                            <button class="text-[#7779F8] text-lg font-medium" id="delete">Delete</button>
+                            <button class="text-[#7779F8] text-lg font-medium" id="delete"><i class="fa-regular fa-trash-can"></i></button>
                         </div>
                     </div>
                 </div>
