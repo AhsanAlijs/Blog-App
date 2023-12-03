@@ -17,7 +17,7 @@ let idNames;
 
 onAuthStateChanged(auth, async (user) => {
     if (!user) {
-        window.location = 'allblogs.html'
+        window.location = 'index.html'
         return
     }
     let uid = user.uid
@@ -25,9 +25,9 @@ onAuthStateChanged(auth, async (user) => {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         // console.log(doc.data());
-        idName.innerHTML = doc.data().name
+        idName.innerHTML = doc.data().names
         imageNav.src = doc.data().profileUrl
-        idNames = doc.data().name
+        idNames = doc.data().names
         img = doc.data().profileUrl
     });
     getdataformfirestore(uid)
@@ -38,7 +38,7 @@ const logout = document.querySelector('#logout');
 
 logout.addEventListener('click', () => {
     signOut(auth).then(() => {
-        window.location = 'login.html'
+        window.location = 'index.html'
     }).catch((error) => {
         console.log(error);
     });
@@ -65,7 +65,7 @@ function renderPost() {
         // console.log(formattedDate);
         // console.log(mydate)
         blogcontainor.innerHTML += `
-        <div class="main-blog w-[75%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]" >
+        <div class="main-blog w-[70%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]" >
                 <!-- blog title start -->
                 <div class="blog-title flex items-center gap-[15px]">
                     <div class="">
@@ -89,7 +89,7 @@ function renderPost() {
                         </P>
                     </div>
                     <!-- blog div End -->
-                    <div class="blog-btn flex items-center gap-[20px] mt-[5px]">
+                    <div class="blog-btn flex items-center gap-[10px] mt-[5px]">
                         <div class="edit">
                             <button class="text-[#7779F8] text-lg font-medium" id="update"><i class="fa-solid fa-file-pen"></i></button>
                         </div>

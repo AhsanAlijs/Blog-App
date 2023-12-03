@@ -31,7 +31,7 @@ form.addEventListener("submit", async(event)=>{
                     const user = userCredential.user;
                     console.log(user);
                     addDoc(collection(db, "users"), {
-                        name: names,
+                        names: names,
                         email: email.value,
                         uid: user.uid,
                         profileUrl: url
