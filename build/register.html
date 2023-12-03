@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Bloging App</title>
+    <link rel="stylesheet" href="./dist/style.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <!-- nav bar start -->
+        <div class="navbar flex items-center justify-between p-[15px] bg-[#7749F8] text-[#fff]">
+            <header>
+                <p class="text-[20px] font-bold">Personal Blogging App</p>
+            </header>
+            <div class="login">
+                <a href="./login.html" class="font-semibold">Login</a>
+            </div>
+        </div>
+        <!-- nav bar End -->
+
+        <!-- text Start -->
+        <div class="main-text-head border-b-[1px]  border-[#80808038] p-[20px]">
+            <p class="text-[25px] font-bold ">Signup</p>
+        </div>
+        <!-- text End -->
+
+        <!-- Form start -->
+        <div class="main-form flex items-center justify-center p-[100px]">
+            <div class="form  bg-[#fff] w-[50%] p-[70px] border rounded-md shadow-2xl ">
+
+                <form id="form" class="flex items-center justify-center flex-col gap-4">
+
+                    <!-- First name start -->
+                    <input type="text" placeholder="Enter Your First Name"
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double"
+                        required minlength="3" maxlength="20" id="first-name">
+                    <!-- First name End -->
+
+                    <!-- Last name start -->
+                    <input type="text" placeholder="Enter Your Last Name"
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double"
+                        required minlength="3" maxlength="20" id="last-name">
+                    <!-- Last name End -->
+
+                    <!-- Email Start -->
+                    <input type="email" placeholder="Enter Your Email"
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double" id="email">
+                    <!-- Email End -->
+
+                    <!-- password Start -->
+                    <input type="password" placeholder="Enter Your Password"
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$" required id="password">
+                    <!-- password End -->
+
+                    <!-- Retype Password start -->
+                    <input type="password" placeholder="Re Type Password "
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double" id="retype-password">
+                    <!-- Retype Password start -->
+
+                    <!-- File start -->
+                    <input type="file" class="block w-full text-sm text-slate-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-violet-50 file:text-violet-700
+                    hover:file:bg-violet-100 border rounded-lg p-[5px]
+                  " id="upload-photo" required>
+                    <!-- File End -->
+
+                    <!-- Button start -->
+                    <div class="p-[10px]">
+                        <button
+                            class="bg-[#7749F8] px-[20px] py-[10px] rounded-lg font-semibold text-[#fff] " type="submit">Signup</button>
+                    </div>
+                    <!-- Button End -->
+                </form>
+            </div>
+        </div>
+        <!-- Form End -->
+
+        <!-- modal start -->
+
+        <!-- modal end -->
+
+
+
+    </div>
+    <script src="./script/register.js" type="module"></script>
+</body>
+
+</html>
