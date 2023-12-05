@@ -57,11 +57,11 @@ postsQuerySnapshot.forEach((doc) => {
 let idname;
 let postimg;
 allBlogsArry.map(async (item) => {
-    const usersQuerySnapshot = await getDocs(collection(db, "users"));
+    const usersQuerySnapshot = await getDocs(collection(db, "users"), where('docId', '==', item.docId));
     usersQuerySnapshot.forEach((user) => {
         // console.log(user.data());
         idname = user.data().names
-        postimg=user.data().profileUrl
+        postimg = user.data().profileUrl
     });
     // console.log(item);
     const time = item.time.seconds
