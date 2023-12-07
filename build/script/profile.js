@@ -20,14 +20,14 @@ function userRender() {
 
 }
 // console.log(userProfileArr);
-
+let uid;
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location = "./login.html"
     return
   }
-  let uid = user.uid
+   uid = user.uid
   const q = query(collection(db, "users"), where("uid", "==", uid));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc,) => {
@@ -64,8 +64,8 @@ updateForm.addEventListener('submit', async (e) => {
   e.preventDefault()
 
   async function updateUserName() {
-    const usersCollectionRef = collection(db, "users");
-    const querySnapshot = await getDocs(usersCollectionRef);
+    const q = query(collection(db, "users"), where("uid", "==", uid));
+    const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       updateDoc(doc.ref, {
         names: updateName.value,

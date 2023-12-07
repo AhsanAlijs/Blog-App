@@ -11,8 +11,33 @@ const title = document.querySelector('#title')
 const description = document.querySelector('#description');
 const blogcontainor = document.querySelector('#blogcontainor')
 
-let img;
-let idNames;
+let uid;
+
+let userData;
+const q = query(collection(db, "users"),);
+const querySnapshot = await getDocs(q);
+
+querySnapshot.forEach((doc) => {
+    userData = doc.data()
+
+
+});
+// console.log(userData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 onAuthStateChanged(auth, async (user) => {
@@ -20,19 +45,21 @@ onAuthStateChanged(auth, async (user) => {
         window.location = 'index.html'
         return
     }
-    let uid = user.uid
+    uid = user.uid
     const q = query(collection(db, "users"), where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         // console.log(doc.data());
         idName.innerHTML = doc.data().names
         imageNav.src = doc.data().profileUrl
-        idNames = doc.data().names
-        img = doc.data().profileUrl
+
+
     });
     getdataformfirestore(uid)
     // renderPost(img)
 });
+
+
 
 const logout = document.querySelector('#logout');
 
@@ -50,6 +77,8 @@ let postsArr = [];
 function renderPost() {
     blogcontainor.innerHTML = ''
     postsArr.map((item) => {
+
+        // console.log(item.userArr.profileUrl);
         const time = item.time.seconds
         const mydate = new Date(time * 1000)
         const stringdate = mydate.toLocaleString()
@@ -69,12 +98,12 @@ function renderPost() {
                 <!-- blog title start -->
                 <div class="blog-title flex items-center gap-[15px]">
                     <div class="">
-                        <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
+                        <img src="${item.userArr.profileUrl}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
                     </div>
 
                     <div class="title-text  ">
                         <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[%]">${item.title}</p>
-                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> - <span>${formattedDate}</span>
+                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]"><span>${item.userArr.names}</span> - <span>${formattedDate}</span>
                         </p>
                     </div>
                 </div>
@@ -125,7 +154,7 @@ function renderPost() {
             const updateDescription = prompt('Update The Description', postsArr[index].description)
             await updateDoc(doc(db, "posts", postsArr[index].docId), {
                 title: updatedTitle,
-                description:updateDescription,
+                description: updateDescription,
                 time: Timestamp.fromDate(new Date())
             });
             postsArr[index].title = updatedTitle;
@@ -180,9 +209,11 @@ blogform.addEventListener("submit", async (e) => {
             title: title.value,
             description: description.value,
             uid: auth.currentUser.uid,
-            time: Timestamp.fromDate(new Date())
+            time: Timestamp.fromDate(new Date()),
+            userArr: userData
+
         }
-        const docRef = await addDoc(collection(db, "posts"), postObj);
+        const docRef = await addDoc(collection(db, "posts"), postObj,);
         console.log("Document written with ID: ", docRef.id);
         postObj.docId = docRef.id
         postsArr = [postObj, ...postsArr];

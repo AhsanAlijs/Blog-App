@@ -18,26 +18,7 @@
             </header>
             <div class="flex-none gap-2">
 
-                <!-- <div class="dropdown dropdown-end">
-                  <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                    <div class="w-10 rounded-full">
-                      <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
-                  </div>
-                  <ul class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                    <li>
-                      <a class="justify-between" href="./dashboard.html">
-                        Dashboard
-                      </a>
-  
-                    </li>
-                    <li>
-                        <div class="login">
-                            <button class="font-semibold" id="logout">Log Out</button>
-                        </div>
-                    </li>
-                  </ul>
-                </div> -->
+               
             </div>
             <div class="login">
                 <a class="font-semibold" id="logoin" href="./login.html">Login</a>
@@ -55,131 +36,9 @@
         <!-- blog start -->
 
         <div class="main-blog">
-            <div class="maintext p-[20px]">
+            <div class="maintext p-[20px]" id="data">
 
-                <div class="flex items-center justify-between flex-wrap ">
-                    <div class="main-blog w-[69%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]">
-                        <!-- blog title start -->
-                        <div class="blog-title flex items-center gap-[15px]">
-                            <div class="">
-                                <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]"
-                                    id="blog-img">
-                            </div>
-
-                            <div class="title-text  ">
-                                <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button
-                                    Could Be
-                                    Coming to the iPhone 15</p>
-                                <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> -
-                                    <span>${formattedDate}</span>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- blog title end -->
-
-                        <!-- Blog-description-start -->
-                        <div class="blog-description mt-[20px]">
-                            <!-- blog div start  -->
-                            <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
-                                <p>
-                                    ${item.description.slice(0, 382)}
-                                </P>
-                                <p>${item.description.slice(382)}</p>
-                            </div>
-                            <!-- blog div End -->
-                           
-                        </div>
-                    </div>
-
-
-                    <div class="main-blog w-[69%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]">
-                        <!-- blog title start -->
-                        <div class="blog-title flex items-center gap-[15px]">
-                            <div class="">
-                                <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]"
-                                    id="blog-img">
-                            </div>
-
-                            <div class="title-text  ">
-                                <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button
-                                    Could Be
-                                    Coming to the iPhone 15</p>
-                                <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> -
-                                    <span>${formattedDate}</span>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- blog title end -->
-
-                        <!-- Blog-description-start -->
-                        <div class="blog-description mt-[20px]">
-                            <!-- blog div start  -->
-                            <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
-                                <p>
-                                    ${item.description.slice(0, 382)}
-                                </P>
-                                <p>${item.description.slice(382)}</p>
-                            </div>
-                            <!-- blog div End -->
-                            
-                        </div>
-                    </div>
-
-
-
-                    <div class="main-blog w-[69%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]">
-                        <!-- blog title start -->
-                        <div class="blog-title flex items-center gap-[15px]">
-                            <div class="">
-                                <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]"
-                                    id="blog-img">
-                            </div>
-
-                            <div class="title-text  ">
-                                <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[55%]">An Action Button
-                                    Could Be
-                                    Coming to the iPhone 15</p>
-                                <p class="w-[35%] text-[16px] font-semibold text-[#6C757D]"><span>${idNames}</span> -
-                                    <span>${formattedDate}</span>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- blog title end -->
-
-                        <!-- Blog-description-start -->
-                        <div class="blog-description mt-[20px]">
-                            <!-- blog div start  -->
-                            <div class="description w-[100%]  text-[16px] leading-[2] text-[#6C757D]">
-                                <p>
-                                    ${item.description.slice(0, 382)}
-                                </P>
-                                <p>${item.description.slice(382)}</p>
-                            </div>
-                            <!-- blog div End -->
-                            
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-                    <div class=" text-end p-[20px] absolute  right-0 top-[200px]">
-                        <div class="email ">
-                            <p class="text-[#000] text-[20px] font-[600]">abc#gmail.com</p>
-                        </div>
-                        <div class="name ">
-                            <p class="text-[#7749F8] text-[40px] font-[700]">Ahsan ali</p>
-                        </div>
-                        <div class="img">
-                            <img src="https://s3-alpha-sig.figma.com/img/2a70/0436/ad923e69a8ff7debe812a1b55f9e2cca?Expires=1702252800&Signature=P3QSagMl-vOZI44Iw1oMQ7WsRYxkLBTtgKFXML2ZMHIqsifyscKolOr3g5acLxDqIeADPP-4fiaAbc9MXk2eN6sKznt4262wZ2nze2e1jHnRjaV9fvjddmCbCcfwMO-dZc5MqBpDlQqRC4r6biKgeyMigepKYLZctJWaSElXf4yL6SCEkcrfYRFMq1MnvdPb6RhJoN1k5HDvwYAPlO4mjrdxgENoFUapJSBEU0NHdXQrF47KP5DKelBqc4i8APv2LCfNPih6k4AsJbWNUQAKwaGNCRY0345mmLwRUG8rQ7BnckbDtX4Ehm5Mng3j5rSDSntbUptnNG5eofInaJb37g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                                alt="" class="w-[300px] rounded-[12px]">
-                        </div>
-
-                    </div>
-                </div>
+                
 
 
 
@@ -232,7 +91,7 @@
         <!-- font -->
         <script src="https://kit.fontawesome.com/5562aae272.js" crossorigin="anonymous"></script>
         <!-- font -->
-        <script src="" type="module"></script>
+        <script src="./script/spasificuser.js" type="module"></script>
 </body>
 
 </html>

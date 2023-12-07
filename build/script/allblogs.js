@@ -8,6 +8,13 @@ const time = document.querySelector('#time');
 const allBlogContent = document.querySelector('#allBlogContent')
 
 
+let uid;
+onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+        return
+    }
+    uid = user.uid
+})
 
 
 
@@ -34,7 +41,7 @@ if (currentHour >= 5 && currentHour < 12) {
     greeting = 'Good Night';
 }
 // console.log(greeting);
-const text = document.createTextNode(`${greeting} Raaders!`)
+const text = document.createTextNode(`${greeting} Readers!`)
 time.appendChild(text)
 
 // time end
@@ -42,27 +49,43 @@ time.appendChild(text)
 
 
 const allBlogsArry = [];
+const userData = []
 
+let docsID;
 
-const postsQuerySnapshot = await getDocs(collection(db, "posts"));
+const postsQuerySnapshot = await getDocs(collection(db, "posts"), where('docId', '==', docsID));
 postsQuerySnapshot.forEach((doc) => {
     allBlogsArry.push({ ...doc.data(), docId: doc.id });
-
+    docsID = doc.id
 });
-// const usersQuerySnapshot = await getDocs(collection(db, "users"));
-// usersQuerySnapshot.forEach((doc) => {
-//     allBlogsArry.push({ ...doc.data(), docId: doc.id });
 
-// });
-let idname;
-let postimg;
+console.log(docsID);
+
+
+const usersQuerySnapshot = await getDocs(collection(db, "users"), where('docId', '==', docsID));
+usersQuerySnapshot.forEach((user) => {
+    // console.log(user.data());
+    userData.push({ ...user.data(), docId: user.docId })
+
+    console.log(user.data());
+});
+// console.log(allBlogsArry);
+
+
+let userName;
+let profileImage;
+
+
+userData.map((user) => {
+    userName = user.names
+    profileImage = user.profileUrl
+    console.log();
+})
+
+
+
+
 allBlogsArry.map(async (item) => {
-    const usersQuerySnapshot = await getDocs(collection(db, "users"), where('docId', '==', item.docId));
-    usersQuerySnapshot.forEach((user) => {
-        // console.log(user.data());
-        idname = user.data().names
-        postimg = user.data().profileUrl
-    });
     // console.log(item);
     const time = item.time.seconds
     const mydate = new Date(time * 1000)
@@ -83,13 +106,13 @@ allBlogsArry.map(async (item) => {
                     <!-- blog title start -->
                     <div class="blog-title flex items-center gap-[15px]">
                         <div class="">
-                            <img src="${postimg}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="allblogimg">
+                            <img src="${profileImage}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="allblogimg">
                         </div>
                         
     
                         <div class="title-text  ">
                         <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[%]">${item.title}</p>
-                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]"><span>${idname}</span> - <span>${formattedDate}</span>
+                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]">${userName}<span></span> - <span>${formattedDate}</span>
                         </p>
                     </div>
                     </div>
@@ -113,9 +136,6 @@ allBlogsArry.map(async (item) => {
     
     `
 })
-
-
-
 
 
 
