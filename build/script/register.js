@@ -23,7 +23,7 @@ form.addEventListener("submit", async(event)=>{
     }
 
     const files = uploadPhoto.files[0]
-    const storageRef = ref(storage, names);
+    const storageRef = ref(storage, email.value);
     uploadBytes(storageRef, files).then(() => {
         getDownloadURL(storageRef).then((url) => {
             createUserWithEmailAndPassword(auth, email.value, password.value)

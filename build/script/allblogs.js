@@ -49,38 +49,36 @@ time.appendChild(text)
 
 
 const allBlogsArry = [];
-const userData = []
 
-let docsID;
 
-const postsQuerySnapshot = await getDocs(collection(db, "posts"), where('docId', '==', docsID));
+
+const postsQuerySnapshot = await getDocs(collection(db, "posts"), where('uid', '==', uid));
 postsQuerySnapshot.forEach((doc) => {
     allBlogsArry.push({ ...doc.data(), docId: doc.id });
-    docsID = doc.id
 });
 
-console.log(docsID);
-
-
-const usersQuerySnapshot = await getDocs(collection(db, "users"), where('docId', '==', docsID));
-usersQuerySnapshot.forEach((user) => {
-    // console.log(user.data());
-    userData.push({ ...user.data(), docId: user.docId })
-
-    console.log(user.data());
-});
 // console.log(allBlogsArry);
 
 
-let userName;
-let profileImage;
+// const usersQuerySnapshot = await getDocs(collection(db, "users"), where('docId', '==', docsID));
+// usersQuerySnapshot.forEach((user) => {
+//     // console.log(user.data());
+//     userData.push({ ...user.data(), docId: user.docId })
+
+//     console.log(user.data());
+// });
+// // console.log(allBlogsArry);
 
 
-userData.map((user) => {
-    userName = user.names
-    profileImage = user.profileUrl
-    console.log();
-})
+// let userName;
+// let profileImage;
+
+
+// userData.map((user) => {
+//     userName = user.names
+//     profileImage = user.profileUrl
+//     console.log();
+// })
 
 
 
@@ -106,13 +104,13 @@ allBlogsArry.map(async (item) => {
                     <!-- blog title start -->
                     <div class="blog-title flex items-center gap-[15px]">
                         <div class="">
-                            <img src="${profileImage}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="allblogimg">
+                            <img src="${item.userArr.profileUrl}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="allblogimg">
                         </div>
                         
     
                         <div class="title-text  ">
                         <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[%]">${item.title}</p>
-                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]">${userName}<span></span> - <span>${formattedDate}</span>
+                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]">${item.userArr.names}<span></span> - <span>${formattedDate}</span>
                         </p>
                     </div>
                     </div>
@@ -126,17 +124,28 @@ allBlogsArry.map(async (item) => {
                     </div>
                     <!-- blog div End -->
                     <div class="blog-btn flex items-center gap-[20px] mt-[5px] text-[#787afc]">
-                        <div class="edit text-[#787afc]">
-                            <a class="text-[#787afc] text-lg font-medium" href="./spacificuser.html">see all from this user</a>
+                        <div class="edit text-[#787afc] cursor-pointer">
+                            <a class="text-[#787afc] text-lg font-medium "  id="newpage" >see all from this user</a>
                         </div>
                        
                     </div>
                 </div>
-    
-    
     `
 })
 
+
+const newpage = document.querySelectorAll('#newpage');
+
+newpage.forEach((data,index)=>{
+    data.addEventListener('click', async()=>{
+        const docRef = await addDoc(collection(db, "spasificUser"), {
+            spasificUser:allBlogsArry[index]
+          });
+        //   console.log("Document written with ID: ", docRef.id);
+        // console.log('Daat is milgaya',allBlogsArry[index]);
+        window.location="./spacificuser.html"
+    })
+})
 
 
 

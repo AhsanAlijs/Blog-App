@@ -28,7 +28,6 @@ onAuthStateChanged(auth, async (user) => {
 
 
 
-
 // time start
 let greeting;
 if (currentHour >= 5 && currentHour < 12) {
@@ -100,9 +99,9 @@ allBlogsArry.map(async (item) => {
     allBlogContent.innerHTML += `
 
     
-    <div class="main-blog w-[70%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]">
+    <div class="main-blog w-[70%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px] ">
                     <!-- blog title start -->
-                    <div class="blog-title flex items-center gap-[15px]">
+                    <div class="allimg">
                         <div class="">
                             <img src="${item.userArr.profileUrl}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="allblogimg">
                         </div>
@@ -125,7 +124,7 @@ allBlogsArry.map(async (item) => {
                     <!-- blog div End -->
                     <div class="blog-btn flex items-center gap-[20px] mt-[5px] text-[#787afc]">
                         <div class="edit text-[#787afc] cursor-pointer">
-                            <a class="text-[#787afc] text-lg font-medium "  id="newpage" >see all from this user</a>
+                            <a  href="./spacificuser.html" class="text-[#787afc] text-lg font-medium "  id="newpage" >see all from this user</a>
                         </div>
                        
                     </div>
@@ -134,18 +133,7 @@ allBlogsArry.map(async (item) => {
 })
 
 
-const newpage = document.querySelectorAll('#newpage');
 
-newpage.forEach((data,index)=>{
-    data.addEventListener('click', async()=>{
-        const docRef = await addDoc(collection(db, "spasificUser"), {
-            spasificUser:allBlogsArry[index]
-          });
-        //   console.log("Document written with ID: ", docRef.id);
-        // console.log('Daat is milgaya',allBlogsArry[index]);
-        window.location="./spacificuser.html"
-    })
-})
 
 
 
