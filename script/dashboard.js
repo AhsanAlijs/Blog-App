@@ -14,15 +14,15 @@ const blogcontainor = document.querySelector('#blogcontainor')
 let uid;
 
 let userData;
-const q = query(collection(db, "users"),);
-const querySnapshot = await getDocs(q);
+// const q = query(collection(db, "users"),);
+// const querySnapshot = await getDocs(q);
 
-querySnapshot.forEach((doc) => {
-    userData = doc.data()
+// querySnapshot.forEach((doc) => {
+//     userData = doc.data()
 
 
-});
-// console.log(userData);
+// });
+// // console.log(userData);
 
 
 
@@ -50,6 +50,7 @@ onAuthStateChanged(auth, async (user) => {
     const q = query(collection(db, "users"), where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
+        userData = doc.data()
         // console.log(doc.data());
         idName.innerHTML = doc.data().names
         imageNav.src = doc.data().profileUrl

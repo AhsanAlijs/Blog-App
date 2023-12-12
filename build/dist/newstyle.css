@@ -1,0 +1,17 @@
+#allblogimg , #blog-img{
+    width: 90px;
+    border-radius: 10px;
+}
+.main-blog{
+    padding: 30px;
+}
+.allimg{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#newpage{
+    color: #787afc;
+    font-size: large;
+    cursor: pointer;
+}

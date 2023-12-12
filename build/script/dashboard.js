@@ -33,7 +33,8 @@ querySnapshot.forEach((doc) => {
 
 
 
-
+let img;
+let logname;
 
 
 
@@ -52,6 +53,8 @@ onAuthStateChanged(auth, async (user) => {
         // console.log(doc.data());
         idName.innerHTML = doc.data().names
         imageNav.src = doc.data().profileUrl
+        img = doc.data().profileUrl
+        logname = doc.data().names
 
 
     });
@@ -96,14 +99,14 @@ function renderPost() {
         blogcontainor.innerHTML += `
         <div class="main-blog w-[70%] bg-[#ffff] p-[40px] shadow-2xl rounded-2xl mt-[20px]" >
                 <!-- blog title start -->
-                <div class="blog-title flex items-center gap-[15px]">
+                <div class="allimg">
                     <div class="">
-                        <img src="${item.userArr.profileUrl}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
+                        <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
                     </div>
 
                     <div class="title-text  ">
                         <p class="text-[24px] font-bold leading-[1.5] text-[#000] w-[%]">${item.title}</p>
-                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]"><span>${item.userArr.names}</span> - <span>${formattedDate}</span>
+                        <p class="w-[] text-[16px] font-semibold text-[#6C757D]"><span>${logname}</span> - <span>${formattedDate}</span>
                         </p>
                     </div>
                 </div>
