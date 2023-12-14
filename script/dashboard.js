@@ -10,6 +10,7 @@ const blogform = document.querySelector('#blogform');
 const title = document.querySelector('#title')
 const description = document.querySelector('#description');
 const blogcontainor = document.querySelector('#blogcontainor')
+const dome = document.querySelector('.dome')
 
 let uid;
 
@@ -37,6 +38,21 @@ let img;
 let logname;
 
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+  Toast.fire({
+    icon: "success",
+    title: `Login Successfully`
+  });
 
 
 
@@ -56,8 +72,6 @@ onAuthStateChanged(auth, async (user) => {
         imageNav.src = doc.data().profileUrl
         img = doc.data().profileUrl
         logname = doc.data().names
-
-
     });
     getdataformfirestore(uid)
     // renderPost(img)
@@ -103,6 +117,7 @@ function renderPost() {
                 <div class="allimg">
                     <div class="">
                         <img src="${img}" class="object-cover object-center w-[90px] h-[90px]  rounded-[15px]" id="blog-img">
+                        
                     </div>
 
                     <div class="title-text  ">
@@ -122,7 +137,7 @@ function renderPost() {
                         </P>
                     </div>
                     <!-- blog div End -->
-                    <div class="blog-btn flex items-center gap-[10px] mt-[5px]">
+                    <div class="blog-btn">
                         <div class="edit">
                             <button class="text-[#7779F8] text-lg font-medium" id="update"><i class="fa-solid fa-file-pen"></i></button>
                         </div>
@@ -202,11 +217,12 @@ getdataformfirestore()
 
 
 
-
+const loading = document.querySelector('.loading')
 
 
 blogform.addEventListener("submit", async (e) => {
     e.preventDefault();
+    loading.style.display='block'
     try {
         const postObj = {
 
@@ -227,6 +243,8 @@ blogform.addEventListener("submit", async (e) => {
         renderPost()
     } catch (e) {
         console.error("Error adding document: ", e);
+    }finally{
+        loading.style.display='none'
     }
 })
 // console.log(postsArr);

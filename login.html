@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Bloging App</title>
     <link rel="stylesheet" href="./dist/style.css">
+    <link rel="stylesheet" href="./dist/newstyle.css">
 </head>
 
 <body>
 
-    <div class="main">
+    <div class="main ">
         <!-- nav bar start -->
         <div class="navbar flex items-center justify-between p-[15px] bg-[#7749F8] text-[#fff]">
             <header>
@@ -35,29 +36,33 @@
 
                     <!-- Email Start -->
                     <input type="email" placeholder="Enter Your Email"
-                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double" id="email">
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double"
+                        id="email" required>
                     <!-- Email End -->
 
                     <!-- password Start -->
                     <input type="password" placeholder="Enter Your Password"
-                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double"required id="password">
+                        class="border border-[#7749F8] w-[90%] p-[3px] placeholder:text-lg rounded-[5px] outline-[#7749F8] outline-double"
+                        required id="password">
                     <!-- password End -->
 
                     <!-- Button start -->
                     <div class="p-[10px]">
-                        <button
-                            class="bg-[#7749F8] px-[20px] py-[10px] rounded-lg font-semibold text-[#fff] " type="submit">Login</button>
+                        <button class="bg-[#7749F8] px-[20px] py-[10px] rounded-lg font-semibold text-[#fff] submit"
+                            type="submit">Login</button>
                     </div>
+                    <span class="loading loading-spinner loading-lg"></span>
                     <!-- Button End -->
+                    
                 </form>
             </div>
         </div>
         <!-- Form End -->
 
-
-
     </div>
-<script src="./script/login.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./script/login.js" type="module"></script>
 </body>
 
 </html>

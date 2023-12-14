@@ -11,52 +11,72 @@ const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const retypePassword = document.querySelector('#retype-password');
 const uploadPhoto = document.querySelector('#upload-photo')
+const loading = document.querySelector('.loading')
+const submit = document.querySelector('.submit')
 
 
-
-form.addEventListener("submit", async(event)=>{
+form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const names = `${main.value} ${lastName.value}`;
-    if(password.value !== retypePassword.value){
-        alert('password are not same')
-        return
-    }
+    submit.style.display = 'none'
+    loading.style.display = 'block'
 
-    const files = uploadPhoto.files[0]
-    const storageRef = ref(storage, email.value);
-    uploadBytes(storageRef, files).then(() => {
-        getDownloadURL(storageRef).then((url) => {
-            createUserWithEmailAndPassword(auth, email.value, password.value)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    console.log(user);
-                    addDoc(collection(db, "users"), {
+    const names = `${main.value} ${lastName.value}`;
+
+    try {
+        if (password.value !== retypePassword.value) {
+            alert('Passwords do not match');
+            return;
+        }
+
+        const files = uploadPhoto.files[0];
+        const storageRef = ref(storage, email.value);
+
+        try {
+            await uploadBytes(storageRef, files);
+            const url = await getDownloadURL(storageRef);
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
+                const user = userCredential.user;
+
+                try {
+                    const res = await addDoc(collection(db, "users"), {
                         names: names,
                         email: email.value,
                         uid: user.uid,
                         profileUrl: url
-                    }).then((res) => {
-                        console.log(res);
-                        window.location = 'login.html'
-                    }).catch((err) => {
-                        console.log(err);
-                    })
-                })
-        })
-            .catch((error) => {
-                const errorMessage = error.message;
+                    });
+
+                    console.log(res);
+                    window.location = 'login.html';
+                } catch (addDocError) {
+                    console.log(addDocError);
+                }
+
+            } catch (createUserError) {
+                const errorMessage = createUserError.message;
                 console.log(errorMessage);
-                modalMessage.innerHTML = errorMessage
-            });
-    })
+                modalMessage.innerHTML = errorMessage;
+            }
 
-        .catch((error) => {
-            const errorMessage = error.message;
+        } catch (uploadError) {
+            const errorMessage = uploadError.message;
             console.log(errorMessage);
-        });
+            modalMessage.innerHTML = errorMessage;
+        }
 
-    
-})
+    } catch (error) {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+    } finally {
+        loading.style.display = 'none'
+        submit.style.display = 'block'
+
+
+    }
+});
+
+
 
 
 
